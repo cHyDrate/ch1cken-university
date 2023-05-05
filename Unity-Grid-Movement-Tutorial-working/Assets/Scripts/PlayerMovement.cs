@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
     bool falling;
     float targetFallHeight;
 
-    void Update() {
+    void Update()
+    {
 
         // Set the ray positions every frame
 
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         xAxisOriginB = yOffset - zOffset;
 
         // Draw Debug Rays
-        
+
         Debug.DrawLine(
                 zAxisOriginA,
                 zAxisOriginA + Vector3.forward * rayLength,
@@ -103,8 +104,10 @@ public class PlayerMovement : MonoBehaviour
                 Color.red,
                 Time.deltaTime);
 
-        if (falling) {
-            if (transform.position.y <= targetFallHeight) {
+        if (falling)
+        {
+            if (transform.position.y <= targetFallHeight)
+            {
                 float x = Mathf.Round(transform.position.x);
                 float y = Mathf.Round(targetFallHeight);
                 float z = Mathf.Round(transform.position.z);
@@ -118,8 +121,11 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             return;
-        } else if (moving) {
-            if (Vector3.Distance(startPosition, transform.position) > 1f) {
+        }
+        else if (moving)
+        {
+            if (Vector3.Distance(startPosition, transform.position) > 1f)
+            {
                 float x = Mathf.Round(targetPosition.x);
                 float y = Mathf.Round(targetPosition.y);
                 float z = Mathf.Round(targetPosition.z);
@@ -133,7 +139,9 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position += (targetPosition - startPosition) * moveSpeed * Time.deltaTime;
             return;
-        } else {
+        }
+        else
+        {
             RaycastHit[] hits = Physics.RaycastAll(
                     transform.position + Vector3.up * 0.5f,
                     Vector3.down,
@@ -141,17 +149,22 @@ public class PlayerMovement : MonoBehaviour
                     walkableMask
             );
 
-            if (hits.Length > 0) {
+            if (hits.Length > 0)
+            {
                 int topCollider = 0;
-                for (int i = 0; i < hits.Length; i++) {
+                for (int i = 0; i < hits.Length; i++)
+                {
                     if (hits[topCollider].collider.bounds.max.y < hits[i].collider.bounds.max.y)
                         topCollider = i;
                 }
-                if (hits[topCollider].distance > 1f) {
+                if (hits[topCollider].distance > 1f)
+                {
                     targetFallHeight = transform.position.y - hits[topCollider].distance + 0.5f;
                     falling = true;
                 }
-            } else {
+            }
+            else
+            {
                 targetFallHeight = -Mathf.Infinity;
                 falling = true;
             }
@@ -160,87 +173,131 @@ public class PlayerMovement : MonoBehaviour
         // Handle player input
         // Also handle moving up 1 level
 
-        if (Input.GetKeyDown(KeyCode.W)) {
-            if (CanMove(Vector3.forward)) {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (CanMove(Vector3.forward))
+            {
                 targetPosition = transform.position + cameraRotator.transform.forward;
                 startPosition = transform.position;
                 moving = true;
-            } else if (CanMoveUp(Vector3.forward)) {
+            }
+            else if (CanMoveUp(Vector3.forward))
+            {
                 targetPosition = transform.position + cameraRotator.transform.forward + Vector3.up;
                 startPosition = transform.position;
                 moving = true;
             }
-        } else if (Input.GetKeyDown(KeyCode.S)) {
-            if (CanMove(Vector3.back)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (CanMove(Vector3.back))
+            {
                 targetPosition = transform.position - cameraRotator.transform.forward;
                 startPosition = transform.position;
                 moving = true;
-            } else if (CanMoveUp(Vector3.back)) {
+            }
+            else if (CanMoveUp(Vector3.back))
+            {
                 targetPosition = transform.position - cameraRotator.transform.forward + Vector3.up;
                 startPosition = transform.position;
                 moving = true;
             }
-        } else if (Input.GetKeyDown(KeyCode.A)) {
-            if (CanMove(Vector3.left)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (CanMove(Vector3.left))
+            {
                 targetPosition = transform.position - cameraRotator.transform.right;
                 startPosition = transform.position;
                 moving = true;
-            } else if (CanMoveUp(Vector3.left)) {
+            }
+            else if (CanMoveUp(Vector3.left))
+            {
                 targetPosition = transform.position - cameraRotator.transform.right + Vector3.up;
                 startPosition = transform.position;
                 moving = true;
             }
-        } else if (Input.GetKeyDown(KeyCode.D)) {
-            if (CanMove(Vector3.right)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (CanMove(Vector3.right))
+            {
                 targetPosition = transform.position + cameraRotator.transform.right;
                 startPosition = transform.position;
                 moving = true;
-            } else if (CanMoveUp(Vector3.right)) {
+            }
+            else if (CanMoveUp(Vector3.right))
+            {
                 targetPosition = transform.position + cameraRotator.transform.right + Vector3.up;
                 startPosition = transform.position;
                 moving = true;
             }
+
         }
-    }
-
-    // Check if the player can move
-
-    bool CanMove(Vector3 direction) {
-        if (direction.z != 0) {
-            if (Physics.Raycast(zAxisOriginA, direction, rayLength)) return false;
-            if (Physics.Raycast(zAxisOriginB, direction, rayLength)) return false;
-        }
-        else if (direction.x != 0) {
-            if (Physics.Raycast(xAxisOriginA, direction, rayLength)) return false;
-            if (Physics.Raycast(xAxisOriginB, direction, rayLength)) return false;
-        }
-        return true;
-    }
-
-    // Check if the player can step-up
-
-    bool CanMoveUp(Vector3 direction) {
-        if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.up, 1f, collidableMask))
-            return false;
-        if (Physics.Raycast(transform.position + Vector3.up * 1.5f, direction, 1f, collidableMask))
-            return false;
-        if (Physics.Raycast(transform.position + Vector3.up * 0.5f, direction, 1f, walkableMask))
-            return true;
-        return false;
-    }
-
-    void OnCollisionEnter(Collision other) {
-        if (falling && (1 << other.gameObject.layer & walkableMask) == 0) {
-            // Find a nearby vacant square to push us on to
-            Vector3 direction = Vector3.zero;
-            Vector3[] directions = { Vector3.forward, Vector3.right, Vector3.back, Vector3.left };
-            for (int i = 0; i < 4; i++) {
-                if (Physics.OverlapSphere(transform.position + directions[i], 0.1f).Length == 0) {
-                    direction = directions[i];
-                    break;
-                }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (CanMove(Vector3.up))
+            {
+                targetPosition = transform.position + cameraRotator.transform.up;
+                startPosition = transform.position;
+                moving = true;
             }
-            transform.position += direction;
+            else if (CanMoveUp(Vector3.up))
+            {
+                targetPosition = transform.position + cameraRotator.transform.up + Vector3.up;
+                startPosition = transform.position;
+                moving = true;
+            }
+
+        }
+
+        // Check if the player can move
+
+        bool CanMove(Vector3 direction)
+        {
+            if (direction.z != 0)
+            {
+                if (Physics.Raycast(zAxisOriginA, direction, rayLength)) return false;
+                if (Physics.Raycast(zAxisOriginB, direction, rayLength)) return false;
+            }
+            else if (direction.x != 0)
+            {
+                if (Physics.Raycast(xAxisOriginA, direction, rayLength)) return false;
+                if (Physics.Raycast(xAxisOriginB, direction, rayLength)) return false;
+            }
+            return true;
+        }
+
+        // Check if the player can step-up
+
+        bool CanMoveUp(Vector3 direction)
+        {
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.up, 1f, collidableMask))
+                return false;
+            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, direction, 1f, collidableMask))
+                return false;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, direction, 1f, walkableMask))
+                return true;
+            return false;
+        }
+
+        void OnCollisionEnter(Collision other)
+        {
+            if (falling && (1 << other.gameObject.layer & walkableMask) == 0)
+            {
+                // Find a nearby vacant square to push us on to
+                Vector3 direction = Vector3.zero;
+                Vector3[] directions = { Vector3.forward, Vector3.right, Vector3.back, Vector3.left };
+                for (int i = 0; i < 4; i++)
+                {
+                    if (Physics.OverlapSphere(transform.position + directions[i], 0.1f).Length == 0)
+                    {
+                        direction = directions[i];
+                        break;
+                    }
+                }
+                transform.position += direction;
+            }
         }
     }
 }
