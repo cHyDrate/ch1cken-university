@@ -234,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (CanMove(Vector3.up))
             {

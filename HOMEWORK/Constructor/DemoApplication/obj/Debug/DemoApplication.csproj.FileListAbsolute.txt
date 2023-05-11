@@ -1,0 +1,6 @@
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\obj\Debug\DemoApplication.csproj.CoreCompileInputs.cache
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\bin\Debug\DemoApplication.exe.config
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\bin\Debug\DemoApplication.exe
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\bin\Debug\DemoApplication.pdb
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\obj\Debug\DemoApplication.exe
+C:\GitHub\ch1cken-university\HOMEWORK\Constructor\DemoApplication\obj\Debug\DemoApplication.pdb

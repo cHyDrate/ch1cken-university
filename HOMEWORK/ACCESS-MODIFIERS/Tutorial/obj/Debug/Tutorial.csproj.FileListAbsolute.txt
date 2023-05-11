@@ -1,0 +1,7 @@
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\obj\Debug\Tutorial.csprojAssemblyReference.cache
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\obj\Debug\Tutorial.csproj.CoreCompileInputs.cache
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\bin\Debug\Tutorial.exe.config
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\bin\Debug\Tutorial.exe
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\bin\Debug\Tutorial.pdb
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\obj\Debug\Tutorial.exe
+C:\GitHub\ch1cken-university\HOMEWORK\ACCESS-MODIFIERS\Tutorial\obj\Debug\Tutorial.pdb

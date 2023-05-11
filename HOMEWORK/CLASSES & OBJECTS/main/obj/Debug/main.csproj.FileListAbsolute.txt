@@ -1,0 +1,2 @@
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\main\obj\Debug\main.csprojAssemblyReference.cache
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\main\obj\Debug\main.csproj.CoreCompileInputs.cache

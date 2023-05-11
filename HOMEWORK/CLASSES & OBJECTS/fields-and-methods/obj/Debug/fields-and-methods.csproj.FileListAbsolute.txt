@@ -1,0 +1,7 @@
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\obj\Debug\fields-and-methods.csprojAssemblyReference.cache
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\obj\Debug\fields-and-methods.csproj.CoreCompileInputs.cache
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\bin\Debug\fields-and-methods.exe.config
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\bin\Debug\fields-and-methods.exe
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\bin\Debug\fields-and-methods.pdb
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\obj\Debug\fields-and-methods.exe
+C:\GitHub\ch1cken-university\HOMEWORK\CLASSES & OBJECTS\fields-and-methods\obj\Debug\fields-and-methods.pdb
